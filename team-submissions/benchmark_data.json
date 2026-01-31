@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-01T02:17:01.945556",
+    "N_values": [
+      8,
+      10,
+      12,
+      15,
+      18,
+      20
+    ],
+    "runs": 3,
+    "max_generations": 100,
+    "population_size": 30
+  },
+  "results": {
+    "8": {
+      "classical": [
+        {
+          "energy": 8,
+          "time": 1.0244762897491455,
+          "generations": 100
+        },
+        {
+          "energy": 8,
+          "time": 1.0025441646575928,
+          "generations": 100
+        },
+        {
+          "energy": 8,
+          "time": 0.9811830520629883,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 8,
+          "time": 1.0830650329589844,
+          "generations": 100
+        },
+        {
+          "energy": 8,
+          "time": 0.991673469543457,
+          "generations": 100
+        },
+        {
+          "energy": 8,
+          "time": 0.9786815643310547,
+          "generations": 100
+        }
+      ]
+    },
+    "10": {
+      "classical": [
+        {
+          "energy": 13,
+          "time": 1.8380801677703857,
+          "generations": 100
+        },
+        {
+          "energy": 13,
+          "time": 1.8234350681304932,
+          "generations": 100
+        },
+        {
+          "energy": 13,
+          "time": 1.8304553031921387,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 13,
+          "time": 1.8407032489776611,
+          "generations": 100
+        },
+        {
+          "energy": 13,
+          "time": 1.8560593128204346,
+          "generations": 100
+        },
+        {
+          "energy": 13,
+          "time": 1.8569247722625732,
+          "generations": 100
+        }
+      ]
+    },
+    "12": {
+      "classical": [
+        {
+          "energy": 10,
+          "time": 2.655579090118408,
+          "generations": 100
+        },
+        {
+          "energy": 10,
+          "time": 2.627800703048706,
+          "generations": 100
+        },
+        {
+          "energy": 10,
+          "time": 2.648329257965088,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 10,
+          "time": 2.64670467376709,
+          "generations": 100
+        },
+        {
+          "energy": 10,
+          "time": 2.646028995513916,
+          "generations": 100
+        },
+        {
+          "energy": 10,
+          "time": 2.6808888912200928,
+          "generations": 100
+        }
+      ]
+    },
+    "15": {
+      "classical": [
+        {
+          "energy": 15,
+          "time": 4.167557954788208,
+          "generations": 100
+        },
+        {
+          "energy": 15,
+          "time": 4.143108606338501,
+          "generations": 100
+        },
+        {
+          "energy": 15,
+          "time": 4.2966389656066895,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 15,
+          "time": 4.248724699020386,
+          "generations": 100
+        },
+        {
+          "energy": 15,
+          "time": 4.215423822402954,
+          "generations": 100
+        },
+        {
+          "energy": 15,
+          "time": 4.227788686752319,
+          "generations": 100
+        }
+      ]
+    },
+    "18": {
+      "classical": [
+        {
+          "energy": 25,
+          "time": 5.995490312576294,
+          "generations": 100
+        },
+        {
+          "energy": 25,
+          "time": 6.022805213928223,
+          "generations": 100
+        },
+        {
+          "energy": 25,
+          "time": 6.321838140487671,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 25,
+          "time": 5.981515407562256,
+          "generations": 100
+        },
+        {
+          "energy": 25,
+          "time": 6.286873817443848,
+          "generations": 100
+        },
+        {
+          "energy": 25,
+          "time": 6.283208608627319,
+          "generations": 100
+        }
+      ]
+    },
+    "20": {
+      "classical": [
+        {
+          "energy": 26,
+          "time": 7.693559408187866,
+          "generations": 100
+        },
+        {
+          "energy": 26,
+          "time": 7.64114236831665,
+          "generations": 100
+        },
+        {
+          "energy": 26,
+          "time": 7.759095191955566,
+          "generations": 100
+        }
+      ],
+      "s_tier": [
+        {
+          "energy": 26,
+          "time": 7.5547261238098145,
+          "generations": 100
+        },
+        {
+          "energy": 26,
+          "time": 7.8396522998809814,
+          "generations": 100
+        },
+        {
+          "energy": 26,
+          "time": 7.920801401138306,
+          "generations": 100
+        }
+      ]
+    }
+  },
+  "summary": {
+    "classical": {
+      "8": {
+        "mean_energy": 8.0,
+        "std_energy": 0.0,
+        "min_energy": 8,
+        "max_energy": 8,
+        "mean_time": 1.0027345021565754,
+        "std_time": 0.01767490270808047
+      },
+      "10": {
+        "mean_energy": 13.0,
+        "std_energy": 0.0,
+        "min_energy": 13,
+        "max_energy": 13,
+        "mean_time": 1.8306568463643391,
+        "std_time": 0.005980535126741916
+      },
+      "12": {
+        "mean_energy": 10.0,
+        "std_energy": 0.0,
+        "min_energy": 10,
+        "max_energy": 10,
+        "mean_time": 2.6439030170440674,
+        "std_time": 0.011764449372770951
+      },
+      "15": {
+        "mean_energy": 15.0,
+        "std_energy": 0.0,
+        "min_energy": 15,
+        "max_energy": 15,
+        "mean_time": 4.2024351755778,
+        "std_time": 0.06735581242802628
+      },
+      "18": {
+        "mean_energy": 25.0,
+        "std_energy": 0.0,
+        "min_energy": 25,
+        "max_energy": 25,
+        "mean_time": 6.1133778889973955,
+        "std_time": 0.14782485875185303
+      },
+      "20": {
+        "mean_energy": 26.0,
+        "std_energy": 0.0,
+        "min_energy": 26,
+        "max_energy": 26,
+        "mean_time": 7.697932322820027,
+        "std_time": 0.048253213626199276
+      }
+    },
+    "s_tier": {
+      "8": {
+        "mean_energy": 8.0,
+        "std_energy": 0.0,
+        "min_energy": 8,
+        "max_energy": 8,
+        "mean_time": 1.0178066889444988,
+        "std_time": 0.04644843734649373
+      },
+      "10": {
+        "mean_energy": 13.0,
+        "std_energy": 0.0,
+        "min_energy": 13,
+        "max_energy": 13,
+        "mean_time": 1.8512291113535564,
+        "std_time": 0.0074512902273682815
+      },
+      "12": {
+        "mean_energy": 10.0,
+        "std_energy": 0.0,
+        "min_energy": 10,
+        "max_energy": 10,
+        "mean_time": 2.6578741868336997,
+        "std_time": 0.01627619117546145
+      },
+      "15": {
+        "mean_energy": 15.0,
+        "std_energy": 0.0,
+        "min_energy": 15,
+        "max_energy": 15,
+        "mean_time": 4.230645736058553,
+        "std_time": 0.013744311403293104
+      },
+      "18": {
+        "mean_energy": 25.0,
+        "std_energy": 0.0,
+        "min_energy": 25,
+        "max_energy": 25,
+        "mean_time": 6.183865944544475,
+        "std_time": 0.14309126062682584
+      },
+      "20": {
+        "mean_energy": 26.0,
+        "std_energy": 0.0,
+        "min_energy": 26,
+        "max_energy": 26,
+        "mean_time": 7.771726608276367,
+        "std_time": 0.1569781340458108
+      }
+    }
+  },
+  "known_optima": {
+    "3": 1,
+    "4": 4,
+    "5": 2,
+    "6": 5,
+    "7": 4,
+    "8": 8,
+    "9": 6,
+    "10": 8,
+    "11": 6,
+    "12": 12,
+    "13": 9,
+    "14": 14,
+    "15": 13,
+    "16": 16,
+    "17": 12,
+    "18": 18,
+    "19": 14,
+    "20": 24,
+    "21": 18,
+    "22": 20,
+    "23": 17,
+    "24": 24,
+    "25": 22
+  }
+}
