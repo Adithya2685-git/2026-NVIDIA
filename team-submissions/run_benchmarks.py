@@ -25,9 +25,9 @@ matplotlib.use('Agg')  # Non-interactive backend for servers
 import matplotlib.pyplot as plt
 
 # Import our modules
-from code.labs_energy import calculate_energy, KNOWN_OPTIMA, random_sequence
-from code.mts import memetic_tabu_search
-from code.boltzmann_seeding import boltzmann_seeding, diversity_metrics
+from labs_solver.labs_energy import calculate_energy, KNOWN_OPTIMA, random_sequence
+from labs_solver.mts import memetic_tabu_search
+from labs_solver.boltzmann_seeding import boltzmann_seeding, diversity_metrics
 
 
 def run_benchmark(N, runs=3, max_generations=100, population_size=30, verbose=True):

@@ -24,16 +24,16 @@ code_dir = os.path.join(os.path.dirname(__file__), 'code')
 if code_dir not in sys.path:
     sys.path.insert(0, code_dir)
 
-from code.labs_energy import (
+from labs_solver.labs_energy import (
     calculate_energy, calculate_autocorrelations,
     verify_symmetries, KNOWN_OPTIMA, random_sequence,
     bitstring_to_sequence, sequence_to_bitstring
 )
-from code.tabu_search import tabu_search, is_local_minimum
-from code.mts import combine, mutate, memetic_tabu_search
-from code.dcqo_kernels import get_interactions, count_interactions
-from code.boltzmann_seeding import boltzmann_weights, boltzmann_seeding, diversity_metrics
-from code.schedules import (
+from labs_solver.tabu_search import tabu_search, is_local_minimum
+from labs_solver.mts import combine, mutate, memetic_tabu_search
+from labs_solver.dcqo_kernels import get_interactions, count_interactions
+from labs_solver.boltzmann_seeding import boltzmann_weights, boltzmann_seeding, diversity_metrics
+from labs_solver.schedules import (
     SinSquaredSchedule, LinearSchedule, QuadraticSchedule,
     SmoothStepSchedule, CubicSchedule, ALL_SCHEDULES
 )
@@ -49,8 +49,8 @@ class TestLABSEnergy:
         assert calculate_energy([-1, -1, 1]) == 1
     
     def test_n4_optimal(self):
-        """Known optimum for N=4 is E=4."""
-        assert calculate_energy([1, 1, 1, -1]) == 4
+        """Known optimum for N=4 is E=2."""
+        assert calculate_energy([1, -1, -1, -1]) == 2
     
     def test_n5_optimal(self):
         """Known optimum for N=5 is E=2."""
@@ -120,7 +120,7 @@ class TestLABSEnergy:
         for i in range(2**7):
             s = [1 if (i >> j) & 1 else -1 for j in range(7)]
             min_energy = min(min_energy, calculate_energy(s))
-        assert min_energy == 4, f"N=7 optimal should be 4, got {min_energy}"
+        assert min_energy == 3, f"N=7 optimal should be 3, got {min_energy}"
     
     def test_autocorrelation_length(self):
         """Autocorrelation array has correct length."""
