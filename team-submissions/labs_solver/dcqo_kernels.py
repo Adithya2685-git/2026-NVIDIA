@@ -147,6 +147,7 @@ if CUDAQ_AVAILABLE:
             q1: Second qubit (Y acts here for R_ZY)
             theta: Rotation angle (already includes factor of 4 from Eq. 15)
         """
+        pi = 3.14159265359
         # R_YZ(θ): exp(-i * θ * Y⊗Z)
         # Decomposition: RZ(-π/2) on q0, RZZ, RZ(π/2) on q0
         rz(-pi / 2, q0)
@@ -187,6 +188,7 @@ if CUDAQ_AVAILABLE:
         # We implement a simplified version using the ladder decomposition
         # Each R_YZZZ type rotation becomes: ladder CNOTs, RY, ladder CNOTs back
         
+        pi = 3.14159265359
         # R_YZZZ(θ): Y on q0, Z on q1,q2,q3
         rz(-pi / 2, q0)
         x.ctrl(q0, q1)

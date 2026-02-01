@@ -638,5 +638,17 @@ if __name__ == "__main__":
     print(f"Matplotlib available: {MATPLOTLIB_AVAILABLE}")
     print()
     
-    # Run quick benchmark
-    quick_benchmark(N=12, runs=3)
+    # Run comprehensive benchmark for presentation
+    print("Running comprehensive benchmark (N=20, 25, 29)...")
+    runner = BenchmarkRunner(
+        N_values=[20, 25, 29],
+        runs=2,
+        max_generations=500,
+        population_size=50,
+        verbose=True
+    )
+    results = runner.run_all()
+    runner.print_summary()
+    runner.save_results("benchmark_results.json")
+    if MATPLOTLIB_AVAILABLE:
+        runner.plot_comparison("benchmark_results.png")

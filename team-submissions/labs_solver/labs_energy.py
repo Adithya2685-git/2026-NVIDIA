@@ -238,7 +238,7 @@ KNOWN_OPTIMA = {
     9: (6, None),
     10: (8, None),
     11: (6, None),
-    12: (12, None),
+    12: (10, None),
     13: (9, None),
     14: (14, None),
     15: (13, None),
@@ -252,6 +252,10 @@ KNOWN_OPTIMA = {
     23: (17, None),
     24: (24, None),
     25: (22, None),
+    26: (24, None),
+    27: (18, None),
+    28: (26, None),
+    29: (22, None),
 }
 
 
