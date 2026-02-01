@@ -648,7 +648,7 @@ if __name__ == "__main__":
     # Run comprehensive benchmark for presentation
     print("Running comprehensive benchmark (N=20, 25, 29)...")
     runner = BenchmarkRunner(
-        N_values=[8, 10, 15, 20, 25],
+        N_values=[8, 10, 15, 20],
         runs=2,
         max_generations=200,
         population_size=30,
