@@ -125,8 +125,9 @@ class BenchmarkRunner:
         # Run DCQO with default sin² schedule
         samples, energies, dcqo_stats = run_dcqo(
             N,
-            n_shots=1000,
+            n_shots=200,
             n_steps=1,
+            target='tensornet-mps',
             verbose=False
         )
         
@@ -167,12 +168,13 @@ class BenchmarkRunner:
         if CUDAQ_AVAILABLE:
             from .schedules import ALL_SCHEDULES
             
-            for schedule_class in ALL_SCHEDULES:
+            for schedule_class in ALL_SCHEDULES[:2]:
                 try:
                     samples, energies, _ = run_dcqo(
                         N,
-                        n_shots=400,  # Total 2000 across 5 schedules
+                        n_shots=100,
                         n_steps=1,
+                        target='tensornet-mps',
                         verbose=False
                     )
                     all_samples.extend(samples)
@@ -364,8 +366,11 @@ class BenchmarkRunner:
         # Plot optimal line
         opt_Ns = sorted([N for N in self.N_values if N in KNOWN_OPTIMA])
         opt_Es = [KNOWN_OPTIMA[N][0] for N in opt_Ns]
-        if opt_Ns:
-            ax1.plot(opt_Ns, opt_Es, 'k--', label='Optimal', linewidth=2)
+        opt_pairs = [(n, KNOWN_OPTIMA[n][0]) for n in opt_Ns if KNOWN_OPTIMA[n][0] is not None]
+        if opt_pairs:
+            opt_plot_ns = [n for n, _ in opt_pairs]
+            opt_plot_es = [e for _, e in opt_pairs]
+            ax1.plot(opt_plot_ns, opt_plot_es, 'k--', label='Optimal', linewidth=2)
         
         ax1.set_xlabel('Sequence Length N')
         ax1.set_ylabel('Energy')
@@ -488,9 +493,10 @@ def plot_convergence(
                        alpha=0.2, color=colors.get(method, 'gray'))
     
     # Optimal line
-    if N in KNOWN_OPTIMA:
-        ax.axhline(y=KNOWN_OPTIMA[N][0], color='red', linestyle='--',
-                  label=f'Optimal (E={KNOWN_OPTIMA[N][0]})')
+    opt_energy = KNOWN_OPTIMA.get(N, (None, None))[0]
+    if opt_energy is not None:
+        ax.axhline(y=opt_energy, color='red', linestyle='--',
+                  label=f'Optimal (E={opt_energy})')
     
     ax.set_xlabel('Generation')
     ax.set_ylabel('Best Energy')
@@ -588,9 +594,10 @@ def plot_beta_study(results: Dict[float, Dict[str, float]], N: int, save_path: O
     ax2.tick_params(axis='y', labelcolor='green')
     
     # Optimal line
-    if N in KNOWN_OPTIMA:
-        ax1.axhline(y=KNOWN_OPTIMA[N][0], color='red', linestyle='--',
-                   label=f'Optimal (E={KNOWN_OPTIMA[N][0]})')
+    opt_energy = KNOWN_OPTIMA.get(N, (None, None))[0]
+    if opt_energy is not None:
+        ax1.axhline(y=opt_energy, color='red', linestyle='--',
+                   label=f'Optimal (E={opt_energy})')
     
     ax1.set_title(f'Effect of Boltzmann β on Performance (N={N})')
     
@@ -643,8 +650,8 @@ if __name__ == "__main__":
     runner = BenchmarkRunner(
         N_values=[20, 25, 29],
         runs=2,
-        max_generations=500,
-        population_size=50,
+        max_generations=200,
+        population_size=30,
         verbose=True
     )
     results = runner.run_all()

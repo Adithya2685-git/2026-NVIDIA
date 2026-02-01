@@ -19,6 +19,7 @@ from typing import List, Union, Tuple, Optional
 
 # Type alias for sequences
 Sequence = Union[List[int], np.ndarray]
+OptimumEntry = Tuple[Optional[int], Optional[np.ndarray]]
 
 
 def calculate_energy(s: Sequence) -> int:
@@ -194,7 +195,7 @@ def energy_delta_single_flip(s: Sequence, energy: int, flip_idx: int) -> int:
     return calculate_energy(s)
 
 
-def brute_force_optimal(N: int) -> Tuple[int, np.ndarray]:
+def brute_force_optimal(N: int) -> Tuple[int, Optional[np.ndarray]]:
     """
     Find optimal sequence by brute force enumeration.
     
@@ -228,7 +229,7 @@ def brute_force_optimal(N: int) -> Tuple[int, np.ndarray]:
 
 # Known optimal energies from the literature
 # Format: N -> (optimal_energy, example_sequence or None)
-KNOWN_OPTIMA = {
+KNOWN_OPTIMA: dict[int, OptimumEntry] = {
     3: (1, np.array([1, 1, -1], dtype=np.int8)),
     4: (2, np.array([1, -1, -1, -1], dtype=np.int8)),
     5: (2, np.array([1, 1, 1, -1, 1], dtype=np.int8)),
@@ -238,7 +239,7 @@ KNOWN_OPTIMA = {
     9: (6, None),
     10: (8, None),
     11: (6, None),
-    12: (10, None),
+    12: (None, None),
     13: (9, None),
     14: (14, None),
     15: (13, None),
@@ -252,10 +253,6 @@ KNOWN_OPTIMA = {
     23: (17, None),
     24: (24, None),
     25: (22, None),
-    26: (24, None),
-    27: (18, None),
-    28: (26, None),
-    29: (22, None),
 }
 
 
@@ -276,6 +273,9 @@ def get_approximation_ratio(energy: int, N: int) -> float:
         return float('nan')
     
     E_opt = KNOWN_OPTIMA[N][0]
+    
+    if E_opt is None:
+        return float('nan')
     
     if energy == 0:
         return float('inf') if E_opt == 0 else 0.0
