@@ -57,6 +57,7 @@ class STierLABSSolver:
         n_trotter_steps: int = 1,
         T: float = 1.0,
         use_gpu: bool = True,
+        quantum_target: Optional[str] = None,
     ):
         """
         Initialize the S-Tier solver.
@@ -84,12 +85,20 @@ class STierLABSSolver:
         self.use_gpu = use_gpu
         
         # Backend status
-        self.backend = 'cpu-simulation'
-        if use_gpu and CUDAQ_AVAILABLE:
+        self.backend = 'qpp-cpu'
+        if CUDAQ_AVAILABLE:
             try:
                 import cudaq
-                cudaq.set_target('nvidia')
-                self.backend = 'nvidia'
+                preferred = quantum_target
+                if preferred is None:
+                    preferred = 'tensornet-mps' if use_gpu else 'qpp-cpu'
+                if hasattr(cudaq, 'has_target') and cudaq.has_target(preferred):
+                    cudaq.set_target(preferred)
+                    self.backend = preferred
+                else:
+                    fallback = 'nvidia' if use_gpu else 'qpp-cpu'
+                    cudaq.set_target(fallback)
+                    self.backend = fallback
             except Exception:
                 self.backend = 'qpp-cpu'
         
@@ -396,7 +405,8 @@ class STierLABSSolver:
         if self.N in KNOWN_OPTIMA:
             opt_energy = KNOWN_OPTIMA[self.N][0]
             stats['optimal_energy'] = opt_energy
-            stats['approximation_ratio'] = opt_energy / best_energy if best_energy > 0 else 1.0
+            if opt_energy is not None:
+                stats['approximation_ratio'] = opt_energy / best_energy if best_energy > 0 else 1.0
         
         if verbose:
             print("\n" + "=" * 60)
